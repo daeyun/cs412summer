@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+service RegexSearchService {
+    rpc SearchAll (SearchRequest) returns (SearchResponse) {
+    }
+}
+
+message SearchRequest {
+    string article_name = 1;
+    repeated string pattern = 2;
+}
+
+message Range {
+    int32 start = 1;
+    int32 length = 2;
+}
+
+message Ranges {
+    repeated Range range = 1;
+}
+
+message SearchResponse {
+    repeated Ranges range_list = 1;
+}
